@@ -17,6 +17,14 @@ COGS = [
     "cogs.review",
 ]
 
+@bot.command()
+async def sync(ctx):
+    if await bot.is_owner(ctx.author):
+        await bot.tree.sync()
+        await ctx.send("Commands synced globally!")
+    else:
+        await ctx.send("You must be daddy to use this command.")
+
 @bot.event
 async def on_ready():
     print(f"Guardian is online as {bot.user}")
